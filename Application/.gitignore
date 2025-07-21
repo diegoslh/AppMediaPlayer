@@ -1,6 +1,13 @@
-#Files Flder
+#Files Folder
 Application/Back/API/ContentUploaded/Banner/*
 Application/Back/API/ContentUploaded/Video/*
+
+!Application/Back/API/ContentUploaded/Banner/
+!Application/Back/API/ContentUploaded/Video/
+
+!Application/Back/API/ContentUploaded/Banner/.gitkeep
+!Application/Back/API/ContentUploaded/Video/.gitkeep
+
 
 ## Build artifacts
 bin/
