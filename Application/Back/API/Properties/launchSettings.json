@@ -29,7 +29,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "IIS Express": {
+    "App Media Player": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "swagger",
