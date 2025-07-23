@@ -91,6 +91,12 @@ app.UseExceptionHandler(appBuilder =>
 });
 
 //Middleware para servir archivos estáticos (imágenes, videos, etc)
+var contentFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "ContentUploaded/");
+Console.WriteLine("🔸🔸🔸 -> Static file path: " + contentFolderPath);
+
+if (!Directory.Exists(contentFolderPath))
+    Directory.CreateDirectory(contentFolderPath);
+
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "ContentUploaded/")),
