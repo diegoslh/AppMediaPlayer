@@ -1,13 +1,15 @@
 #Files Folder
-Back/API/ContentUploaded/Banner/*
-Back/API/ContentUploaded/Video/*
+Application/Back/API/ContentUploaded/Banner/*
+Application/Back/API/ContentUploaded/Video/*
 
-!Back/API/ContentUploaded/Banner/
-!Back/API/ContentUploaded/Video/
+!Application/Back/API/ContentUploaded/Banner/
+!Application/Back/API/ContentUploaded/Video/
 
-!Back/API/ContentUploaded/Banner/.gitkeep
-!Back/API/ContentUploaded/Video/.gitkeep
+!Application/Back/API/ContentUploaded/Banner/.gitkeep
+!Application/Back/API/ContentUploaded/Video/.gitkeep
 
+# Ignore files of volume API
+services/api/content/**
 
 ## Build artifacts
 bin/
