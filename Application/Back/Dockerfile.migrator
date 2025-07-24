@@ -1,0 +1,20 @@
+# Dockerfile.migrator
+# Este Dockerfile se utiliza para crear un contenedor que ejecuta las migraciones de la base de datos al iniciar.
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS migrator
+WORKDIR /app
+
+# Copiamos el proyecto
+COPY . .
+
+# Restauramos e instalamos herramientas si es necesario
+RUN dotnet restore
+
+# Esto es opcional, puedes agregar:
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="${PATH}:/root/.dotnet/tools"
+
+# Ejecuta la migración al iniciar
+# ENTRYPOINT ["dotnet", "ef", "database", "update"]
+# ENTRYPOINT ["dotnet", "ef", "database", "update", "--project", "API/API.csproj", "--startup-project", "API/API.csproj"]
+ENTRYPOINT ["sh", "-c", "sleep 20 && dotnet ef database update --project API/API.csproj --startup-project API/API.csproj"]

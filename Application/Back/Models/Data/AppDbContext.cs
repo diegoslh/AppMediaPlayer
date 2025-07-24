@@ -33,8 +33,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<TblVideo> TblVideos { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ConnectionStrings:LocalConnection");
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //     => optionsBuilder.UseSqlServer("Name=ConnectionStrings:LocalConnection");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

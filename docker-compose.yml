@@ -1,0 +1,65 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: media-player-sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "Temporal1**"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1435:1433"
+    networks:
+      - backend
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  migrator:
+    container_name: media-player-migrations
+    build:
+      context: ./Application/Back
+      dockerfile: Dockerfile.migrator
+    environment:
+      - ConnectionStrings__LocalConnection=Server=db;Database=DbAppMediaPlayer;User Id=sa;Password=Temporal1**;TrustServerCertificate=True;
+    depends_on:
+      - api
+    networks:
+      - backend
+    restart: "no"
+
+  api:
+    container_name: media-player-api
+    build:
+      context: ./Application/Back
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__LocalConnection=Server=db;Database=DbAppMediaPlayer;User Id=sa;Password=Temporal1**;TrustServerCertificate=True;
+    depends_on:
+      - db
+    networks:
+      - backend
+    entrypoint: ["dotnet", "API.dll"]
+    volumes:
+      - ./services/api/content:/app/ContentUploaded
+
+  frontend:
+    container_name: media-player-frontend
+    build:
+      context: ./Application/Front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  sqlserver_data:

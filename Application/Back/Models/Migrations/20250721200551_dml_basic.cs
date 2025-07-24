@@ -15,7 +15,6 @@ namespace Models.Migrations
                 INSERT INTO TblDicRolesSistema VALUES ('Admin', 1), ('User',1);
                 INSERT INTO TblDicTipoContenido VALUES ('BT', 'Banner', 1), ('VT', 'Video', 1), ('VTB', 'Video + Banner', 1);
                 INSERT INTO TblDatosPersona VALUES ('Super', 'Admin', 'First', 'User', 1);
-                INSERT INTO TblUsuarios values (1, 1, 'Admin23', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1); -- Password: 123
                 INSERT INTO TblUsuarios 
                 VALUES 
 	                (
@@ -45,6 +44,7 @@ namespace Models.Migrations
 	                INNER JOIN TblDicTipoContenido tc ON tc.tcto_IdTipoContenidoPk = c.cto_tipoContenidoFk
 	                LEFT JOIN TblBanner bn ON bn.bnr_idContenidoFk = c.cto_IdContenidoPk
 	                LEFT JOIN TblVideo vd ON vd.vdo_idContenidoFk = c.cto_IdContenidoPk
+                    WHERE c.cto_estado = 1;
                 END
             ");
         }
