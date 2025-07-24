@@ -18,23 +18,27 @@ function HomeAdmin() {
             <h3 className="text-center mt-4 mb-0">Programación Contenido</h3>
             <ContentList />
           </div>
-          <div className="col-lg-4 flex_center cont_btns_content">
-            <h3>Crear contenido</h3>
-            <CreateContent
-              label="Banner con Título"
-              content="BT"
-              contentType={1}
-            />
-            <CreateContent
-              label="Video con Título"
-              content="VT"
-              contentType={2}
-            />
-            <CreateContent
-              label="Video + Banner Lateral"
-              content="VBL"
-              contentType={3}
-            />
+          
+          <div className="col-lg-4">
+            <h3 className="text-center mt-4 mb-0">Crear contenido</h3>
+
+            <div className="flex_center cont_btns_content" style={{ padding: "1rem", height: "88%" }}>
+              <CreateContent
+                label="Banner con Título"
+                content="BT"
+                contentType={1}
+              />
+              <CreateContent
+                label="Video con Título"
+                content="VT"
+                contentType={2}
+              />
+              <CreateContent
+                label="Video + Banner Lateral"
+                content="VBL"
+                contentType={3}
+              />
+            </div>
           </div>
         </section>
         <Toaster richColors position="bottom-center" />

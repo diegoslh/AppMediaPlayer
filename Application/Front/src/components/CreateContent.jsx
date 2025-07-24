@@ -113,7 +113,7 @@ function CreateContent({ label, content, contentType }) {
                   (content === "BT" || content === "VBL")
                   && (
                     <>
-                      <label className="form-label">Imagen Banner {content == "BT" && <code>*</code>}</label>
+                      <label className="form-label mt-2">Imagen Banner {content == "BT" && <code>*</code>}</label>
                       <input
                         accept=".png, .jpg, .jpeg"
                         type="file"
@@ -122,7 +122,7 @@ function CreateContent({ label, content, contentType }) {
                         onChange={handleChange}
                         required={content === "BT"}
                       />
-                      <code>Formatos .png, .jpg, .jpeg</code>
+                      <code>Formatos .png, .jpg, .jpeg</code><br />
                     </>
                   )
                 }
@@ -130,7 +130,7 @@ function CreateContent({ label, content, contentType }) {
                   (content === "VT" || content === "VBL")
                   && (
                     <>
-                      <label className="form-label">Video <code>*</code></label>
+                      <label className="form-label mt-2">Video <code>*</code></label>
                       <input
                         accept=".mp4"
                         type="file"
@@ -155,7 +155,7 @@ function CreateContent({ label, content, contentType }) {
               {
                 (content === "BT") && (
                   <div className="col-lg-12 mt-2">
-                    <label className="form-label">Duración de Banner <code>*</code></label>
+                    <label className="form-label">Duración de Banner (segundos)<code>*</code></label>
                     <input type="number" name="CtoDurationBanner" className="form-control" onChange={handleChange} placeholder="" required />
                   </div>
                 )
